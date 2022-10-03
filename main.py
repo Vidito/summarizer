@@ -21,26 +21,31 @@ if url:
 
         img = article.top_image
         st.image(img)
+        
 
         title = article.title
         st.subheader(title)
+        
 
         authors = article.authors
         st.text(','.join(authors))
-        with st.expander('Full Text'):
-            txt = article.text
-            txt = txt.replace('Advertisement', '')
-            st.write(txt)
         
         article.nlp()
 
         keywords = article.keywords
         st.subheader('Keywords:')
         st.write(', '.join(keywords))
-
-        st.subheader('Summary')
-        summary = article.summary
-        st.write(summary)
+        
+        tab1, tab2= st.tabs(["Full Text", "Summary"])
+        with tab1:
+            txt = article.text
+            txt = txt.replace('Advertisement', '')
+            st.write(txt)
+        
+        with tab2:
+            st.subheader('Summary')
+            summary = article.summary
+            st.write(summary)
         
         
     except:
