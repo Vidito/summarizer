@@ -1,9 +1,8 @@
 import streamlit as st
 import newspaper
+import nltk
 
-
-
-st.markdown('<style> .css-1v0mbdj {margin:0 auto; width:50%; </style>', unsafe_allow_html=True)
+# st.markdown('<style> .css-1v0mbdj {margin:0 auto; width:50%; </style>', unsafe_allow_html=True)
 
 
 st.title('Article Summarizer')
@@ -11,34 +10,31 @@ st.title('Article Summarizer')
 url = st.text_input('', placeholder='Paste the URL of the article amd press Enter')
 
 if url:
-    article = newspaper.Article(url)
+    try:
+        article = newspaper.Article(url)
 
-    article.download()
-    # article.html
-    article.parse()
+        article.download()
+        # article.html
+        article.parse()
 
-    img = article.top_image
-    if img:
+        img = article.top_image
         st.image(img)
 
-    title = article.title
-    if title:
+        title = article.title
         st.subheader(title)
 
-    authors = article.authors
-    if authors:
+        authors = article.authors
         st.text(','.join(authors))
 
-    date = article.publish_date
-    if date:
-        st.text(date)
 
-    article.nlp()
+        article.nlp()
 
-    keywords = article.keywords
-    st.write('Keywords:')
-    st.write(', '.join(keywords))
+        keywords = article.keywords
+        st.write('Keywords:')
+        st.write(', '.join(keywords))
 
-    st.subheader('Summary')
-    summary = article.summary
-    st.write(summary)
+        st.subheader('Summary')
+        summary = article.summary
+        st.write(summary)
+    except:
+        st.error('Sorry something went wrong')
