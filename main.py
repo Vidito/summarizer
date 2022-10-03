@@ -30,7 +30,7 @@ if url:
         
         st.subheader('Full text')
         txt = article.text
-        st.write(text)
+        st.write(txt)
         
         article.nlp()
 
