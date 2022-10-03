@@ -45,6 +45,7 @@ if url:
         with tab2:
             st.subheader('Summary')
             summary = article.summary
+            summary = summary.replace('Advertisement', '')
             st.write(summary)
         
         
