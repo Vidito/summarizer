@@ -27,11 +27,10 @@ if url:
 
         authors = article.authors
         st.text(','.join(authors))
-        
-        st.subheader('Full text')
-        txt = article.text
-        txt = txt.replace('Advertisement', '')
-        st.write(txt)
+        with st.expander('Full Text'):
+            txt = article.text
+            txt = txt.replace('Advertisement', '')
+            st.write(txt)
         
         article.nlp()
 
