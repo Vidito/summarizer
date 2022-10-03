@@ -30,12 +30,13 @@ if url:
         
         st.subheader('Full text')
         txt = article.text
+        txt = txt.replace('Advertisement', '')
         st.write(txt)
         
         article.nlp()
 
         keywords = article.keywords
-        st.write('Keywords:')
+        st.subheader('Keywords:')
         st.write(', '.join(keywords))
 
         st.subheader('Summary')
