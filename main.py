@@ -2,6 +2,8 @@ import streamlit as st
 import newspaper
 import nltk
 
+nltk.download('punkt')
+
 # st.markdown('<style> .css-1v0mbdj {margin:0 auto; width:50%; </style>', unsafe_allow_html=True)
 
 
