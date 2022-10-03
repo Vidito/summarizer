@@ -27,8 +27,11 @@ if url:
 
         authors = article.authors
         st.text(','.join(authors))
-
-
+        
+        st.subheader('Full text')
+        txt = article.text
+        st.write(text)
+        
         article.nlp()
 
         keywords = article.keywords
@@ -38,5 +41,7 @@ if url:
         st.subheader('Summary')
         summary = article.summary
         st.write(summary)
+        
+        
     except:
         st.error('Sorry something went wrong')
